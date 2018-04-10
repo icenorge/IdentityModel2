@@ -115,6 +115,9 @@ Task("Pack")
     }
 
     DotNetCorePack(packPath, settings);
+    var nugetPath = buildArtifacts.ToString() + "/3.4.1-ice001.nupkg";
+    Information(nugetPath);
+    TeamCity.PublishArtifacts(buildArtifacts);
 });
 
 
