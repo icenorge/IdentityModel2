@@ -193,14 +193,18 @@ Task("Pack")
     };
 
     DotNetCorePack(packPath, settings);
-
+    var packages = GetFiles("./artifacts/**/*.nupkg");
     if (sign)
     {
-        var packages = GetFiles("./artifacts/**/*.nupkg");
         foreach(var package in packages)
         {
             SignFile(package.FullPath);
         }
+    }
+
+    foreach(var package in packages)
+    {
+        TeamCity.PublishArtifacts(package.FullPath);
     }
 });
 
