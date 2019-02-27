@@ -65,12 +65,7 @@ Setup(context =>
         {
             versions.AssemblyVersion = gitVersions.AssemblySemVer;
             versions.FileVersion = gitVersions.AssemblySemVer;
-
-            if (!string.IsNullOrEmpty(versions.PreReleaseLabel))
-            {
-                versions.VersionSuffix = gitVersions.PreReleaseLabel + gitVersions.CommitsSinceVersionSourcePadded;      
-            }
-            
+            versions.VersionSuffix = "ice001";
         }
 
         Information("branch            : " + versions.BranchName);
